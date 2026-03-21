@@ -20,7 +20,7 @@ $$
 $$
 p' = p + t d \\quad \\Rightarrow \\quad L(p', d) = L(p, d).
 $$
-完整展开证明见文末“补充材料”。
+完整展开证明见 :ref:`沿直线移动不改变 L 的证明 <proof-line-shift>`。
 
 我们可以通过求导来求解d和p。
 
@@ -43,7 +43,7 @@ $$ \\frac{\\partial L}{\\partial p} =2(d \\cdot d^T - I)\\sum_{i=1}^n (x_i - p) 
 $$
 \\mathrm{Null}(d d^T - I) = \\mathrm{span}(d).
 $$
-该结论证明见文末“补充材料”。
+该结论证明见 :ref:`$d d^T - I$ 的零空间证明 <proof-nullspace>`。
 因此由
 $$
 (d d^T - I)\\sum_{i=1}^n (x_i - p) = 0
@@ -108,17 +108,16 @@ $$
 因此最优解是 $X^T X$ 最小特征值对应的特征向量。得到 $\\tilde{n}=[n^T,d]^T$ 后，
 可将前三维法向量归一化为单位长度，并同步缩放 $d$，得到标准形式的平面参数。
 
+.. _appendix:
+
 补充材料
 ------------------------
 
+.. _proof-line-shift:
+
 沿直线移动不改变 $L$ 的证明
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-令
-$$
-p' = p + t d,
-$$
-则
+令$p' = p + t d$，则有
 $$
 \\begin{aligned}
 L'
@@ -129,6 +128,8 @@ L'
 \\end{aligned}
 $$
 因此，$p$ 只在法向平面上的分量会影响 $L$，沿 $d$ 方向的分量不可辨识。
+
+.. _proof-nullspace:
 
 $d d^T - I$ 的零空间证明
 ~~~~~~~~~~~~~~~~~~~~~~~~
