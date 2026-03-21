@@ -60,6 +60,53 @@ $$
 
 平面拟合
 ------------------------
+平面方程可写为
+$$
+n^T x + d = 0.
+$$
+为了把偏置项 $d$ 并入参数向量，将点扩展一维：
+$$
+\\tilde{x}_i = \\begin{bmatrix}x_i \\\\ 1\\end{bmatrix} \\in \\mathbb{R}^4, \\qquad
+\\tilde{n} = \\begin{bmatrix}n \\\\ d\\end{bmatrix} \\in \\mathbb{R}^4.
+$$
+则平面约束变为
+$$
+\\tilde{n}^T \\tilde{x}_i = 0.
+$$
+对含噪点云（共 $N$ 个点）可写最小二乘目标：
+$$
+\\min_{\\tilde{n}} L(\\tilde{n}) = \\sum_{i=1}^{N}(\\tilde{n}^T \\tilde{x}_i)^2
+\\quad \\text{s.t.} \\quad \\|\\tilde{n}\\|=1.
+$$
+
+记设计矩阵
+$$
+X =
+\\begin{bmatrix}
+\\tilde{x}_1^T \\\\
+\\tilde{x}_2^T \\\\
+\\vdots \\\\
+\\tilde{x}_N^T
+\\end{bmatrix}
+\\in \\mathbb{R}^{N\\times 4},
+$$
+则
+$$
+L = \\|X\\tilde{n}\\|^2 = \\tilde{n}^T X^T X\\tilde{n}.
+$$
+构造拉格朗日函数
+$$
+\\mathcal{J}(\\tilde{n},\\lambda)
+= \\tilde{n}^T X^T X\\tilde{n} - \\lambda(\\tilde{n}^T\\tilde{n}-1).
+$$
+一阶条件为
+$$
+\\frac{\\partial \\mathcal{J}}{\\partial \\tilde{n}}=0
+\\Rightarrow
+X^T X\\tilde{n} = \\lambda \\tilde{n}.
+$$
+因此最优解是 $X^T X$ 最小特征值对应的特征向量。得到 $\\tilde{n}=[n^T,d]^T$ 后，
+可将前三维法向量归一化为单位长度，并同步缩放 $d$，得到标准形式的平面参数。
 
 补充材料
 ------------------------
